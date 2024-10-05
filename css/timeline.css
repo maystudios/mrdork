@@ -1,0 +1,244 @@
+@import "https://fonts.googleapis.com/css?family=Niramit:300,300i,700";
+.timeline {
+  position: relative;
+  padding-left: 4rem;
+  margin: 0 0 0 30px;
+  color: #fff;
+}
+.timeline:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: #111111;
+}
+.timeline .timeline-container {
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+.timeline .timeline-container .timeline-icon {
+  position: absolute;
+  left: -88px;
+  top: 4px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 1.9rem;
+  background: #cecece;
+  color: #000;
+}
+.timeline .timeline-container .timeline-icon.done {
+  background: green;
+}
+.timeline .timeline-container .timeline-icon i {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.timeline .timeline-container .timeline-icon img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.timeline .timeline-container .timeline-body {
+  background: transparent;
+  padding: 20px 20px 15px;
+}
+.timeline .timeline-container .timeline-body.currentstate {
+  background: #111111;
+  border-radius: 3px;
+  box-shadow: 1px 3px 9px #0000001a;
+}
+.timeline .timeline-container .timeline-body:before {
+  content: "";
+  background: inherit;
+  width: 20px;
+  height: 20px;
+  display: block;
+  position: absolute;
+  left: -10px;
+  transform: rotate(45deg);
+  border-radius: 0 0 0 2px;
+}
+.timeline .timeline-container .timeline-body .timeline-title {
+  margin-bottom: 1.4rem;
+}
+.timeline .timeline-container .timeline-body .timeline-title .badge {
+  background: #cecece;
+  padding: 4px 8px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.timeline .timeline-container .timeline-body .timeline-subtitle {
+  font-weight: 300;
+  font-style: italic;
+  opacity: 0.4;
+  margin-top: 16px;
+  font-size: 11px;
+}
+.timeline .timeline-container.primary .badge,
+.timeline .timeline-container.primary .timeline-icon,
+.timeline .timeline-container.info .badge,
+.timeline .timeline-container.info .timeline-icon {
+  background: #cecece !important;
+}
+.timeline .timeline-container.success .badge,
+.timeline .timeline-container.success .timeline-icon {
+  background: #78a964 !important;
+}
+.timeline .timeline-container.warning .badge,
+.timeline .timeline-container.warning .timeline-icon,
+.timeline .timeline-container.danger .badge,
+.timeline .timeline-container.danger .timeline-icon {
+  background: #cecece !important;
+}
+.author {
+  font-family: inherit;
+  padding: 3em;
+  text-align: center;
+  width: 100%;
+  color: #fff;
+}
+.author a:link,
+.author a:visited {
+  color: #fff;
+}
+.author a:link:hover,
+.author a:visited:hover {
+  text-decoration: none;
+}
+.author .btn:link,
+.author .btn:visited {
+  margin-top: 1em;
+  text-decoration: none;
+  display: inline-block;
+  font-family: inherit;
+  font-weight: 100;
+  color: #fff;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  background-color: #000;
+  padding: 1.5em 2rem;
+  border-radius: 1em;
+  transition: 0.5s all;
+}
+.author .btn:link:hover,
+.author .btn:link:focus,
+.author .btn:link:active,
+.author .btn:visited:hover,
+.author .btn:visited:focus,
+.author .btn:visited:active {
+  background-color: #1a1a1a;
+}
+.news-block {
+  position: relative;
+}
+.news-block a.main-link {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.6)
+  );
+}
+.news-block :after {
+  content: "";
+  position: relative;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.news-block .card {
+  background: #232323;
+  min-height: 350px;
+  border: none;
+}
+.news-block .card .card-title {
+  font-size: 1.5em;
+  font-weight: 700;
+  text-shadow: 1px 1px #1a1a1a;
+}
+.news-block .card .card-title a {
+  text-decoration: none;
+  text-shadow: 2px 2px #1a1a1a;
+  position: relative;
+  z-index: 1;
+}
+.news-block .card .card-date {
+  font-size: 1em;
+  font-weight: 700;
+  color: gray;
+  text-shadow: 2px 2px #1a1a1a;
+  position: relative;
+  z-index: 1;
+}
+.news-block .card .card-text {
+  text-align: justify;
+  text-shadow: 1px 1px #1a1a1a;
+  position: relative;
+  z-index: 1;
+  font-weight: 400;
+}
+.first {
+  font-size: 1.3em;
+}
+.upvote {
+  font-size: 2em;
+  line-height: 0.8;
+  margin: 0 20px 0 15px;
+  width: 100px;
+}
+.upvote span {
+  font-size: 0.4em;
+}
+.ticket-info {
+  border-radius: 3px;
+}
+.ticket-info .date {
+  font-size: 0.8em;
+  padding: 0;
+  margin: 0;
+}
+.state {
+  font-size: 0.8em;
+}
+.bg-open {
+  background-color: #6b6b6b;
+}
+.bg-assigned {
+  background-color: gray;
+}
+.bg-in-progress {
+  background-color: #949494;
+}
+.bg-resolved {
+  background-color: #a8a8a8;
+}
+.bg-testing {
+  background-color: #bdbdbd;
+}
+.bg-verified {
+  background-color: #d3d3d3;
+}
+.bg-closed {
+  background-color: green;
+  color: #fff;
+}
+.bg-notreproducible {
+  background-color: #111;
+  color: #fff !important;
+}
