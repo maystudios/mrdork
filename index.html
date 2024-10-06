@@ -27,14 +27,17 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
   <link rel="stylesheet" href="css/splitting.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="css/floating-button.css" />
+
+
 </head>
 
 <body class="appear-animate">
 
   <!-- Button in der unteren linken Ecke -->
   <div class="floating-button">
-    <a href="#" class="btn btn-mod btn-w btn-circle btn-icon btn-large">
-      <span><i class="fa fa-pause" aria-hidden="true"></i></span> Pause Music
+    <a href="#" class="btn btn-mod btn-w btn-circle btn-icon btn-large" id="musicToggle">
+      <span><i class="fa fa-music" aria-hidden="true"></i></span>
+      Play Music
     </a>
   </div>
 
@@ -47,24 +50,90 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
   <!-- JavaScript für Musiksteuerung mit Lautstärke -->
   <script>
     const music = document.getElementById('backgroundMusic');
+    const button = document.getElementById('musicToggle');
     music.volume = 0.02; // Setzt die Standardlautstärke auf 0.02
+    let isPlaying = false;
 
-    // Versuche, die Musik direkt beim Laden der Seite abzuspielen
+    // Funktion zur Überprüfung des Gerättyps
+    function isMobileDevice() {
+      return /Mobi|Android/i.test(navigator.userAgent);
+    }
+
+    // Musik starten oder pausieren
+    function toggleMusic() {
+      if (isPlaying) {
+        fadeOut(music, 500); // Schnelleres Fade-Out
+        button.innerHTML = '<span><i class="fa fa-music" aria-hidden="true"></i></span> Play Music'; // Text aktualisieren
+      } else {
+        fadeIn(music, 500); // Schnelleres Fade-In
+        button.innerHTML = '<span><i class="fa fa-pause" aria-hidden="true"></i></span> Pause Music'; // Text aktualisieren
+      }
+      isPlaying = !isPlaying; // Status umschalten
+    }
+
+    // Fade-In-Funktion
+    function fadeIn(audio, duration) {
+      audio.volume = 0;
+      audio.play();
+      const startVolume = 0;
+      const endVolume = 0.02;
+      const step = (endVolume - startVolume) / (duration / 100);
+      let currentVolume = startVolume;
+
+      const fadeInterval = setInterval(() => {
+        if (currentVolume < endVolume) {
+          currentVolume = Math.min(currentVolume + step, endVolume);
+          audio.volume = currentVolume;
+        } else {
+          clearInterval(fadeInterval);
+        }
+      }, 100);
+    }
+
+    // Fade-Out-Funktion
+    function fadeOut(audio, duration) {
+      const startVolume = audio.volume;
+      const endVolume = 0;
+      const step = (startVolume - endVolume) / (duration / 100);
+      let currentVolume = startVolume;
+
+      const fadeInterval = setInterval(() => {
+        if (currentVolume > endVolume) {
+          currentVolume = Math.max(currentVolume - step, endVolume);
+          audio.volume = currentVolume;
+        } else {
+          audio.pause();
+          clearInterval(fadeInterval);
+        }
+      }, 100);
+    }
+
+    // Musik beim Neuladen abspielen, wenn kein Mobilgerät
     window.addEventListener('load', function () {
-      music.play().catch(err => {
-        console.log("Autoplay blocked, waiting for user interaction.");
-      });
+      if (!isMobileDevice()) {
+        fadeIn(music, 500); // Schnelleres Fade-In
+        isPlaying = true; // Musik ist jetzt aktiv
+        button.innerHTML = '<span><i class="fa fa-pause" aria-hidden="true"></i></span> Pause Music'; // Text aktualisieren
+      }
     });
 
-    // Button zum Starten/Stoppen der Musik
-    document.querySelector('.floating-button a').addEventListener('click', function (e) {
-      e.preventDefault(); // Prevent default anchor behavior
-      if (music.paused) {
-        music.play();
-        this.innerHTML = '<span><i class="fa fa-pause" aria-hidden="true"></i></span> Pause Music';
+    // Musiksteuerung über Button
+    button.addEventListener('click', function (event) {
+      event.preventDefault(); // Verhindert das Standardverhalten des Links
+      toggleMusic();
+    });
+
+    // Musik pausieren, wenn der Tab gewechselt wird
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) {
+        if (isPlaying) {
+          fadeOut(music, 500); // Schnelleres Fade-Out
+        }
       } else {
-        music.pause();
-        this.innerHTML = '<span><i class="fa fa-music" aria-hidden="true"></i></span> Play Music';
+        // Musik fortsetzen, wenn sie vorher gespielt hat
+        if (isPlaying) {
+          fadeIn(music, 500); // Schnelleres Fade-In
+        }
       }
     });
   </script>
