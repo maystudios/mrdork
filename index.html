@@ -25,9 +25,50 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
   <link rel="stylesheet" href="css/owl.carousel.css" />
   <link rel="stylesheet" href="css/animate.min.css" />
   <link rel="stylesheet" href="css/splitting.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="css/floating-button.css" />
 </head>
 
 <body class="appear-animate">
+
+  <!-- Button in der unteren linken Ecke -->
+  <div class="floating-button">
+    <a href="#" class="btn btn-mod btn-w btn-circle btn-icon btn-large">
+      <span><i class="fa fa-pause" aria-hidden="true"></i></span> Pause Music
+    </a>
+  </div>
+
+  <!-- Audio für Musik -->
+  <audio id="backgroundMusic" loop>
+    <source src="audio/mrdork3/SW_iDork.WAV" type="audio/wav">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- JavaScript für Musiksteuerung mit Lautstärke -->
+  <script>
+    const music = document.getElementById('backgroundMusic');
+    music.volume = 0.02; // Setzt die Standardlautstärke auf 0.02
+
+    // Versuche, die Musik direkt beim Laden der Seite abzuspielen
+    window.addEventListener('load', function () {
+      music.play().catch(err => {
+        console.log("Autoplay blocked, waiting for user interaction.");
+      });
+    });
+
+    // Button zum Starten/Stoppen der Musik
+    document.querySelector('.floating-button a').addEventListener('click', function (e) {
+      e.preventDefault(); // Prevent default anchor behavior
+      if (music.paused) {
+        music.play();
+        this.innerHTML = '<span><i class="fa fa-pause" aria-hidden="true"></i></span> Pause Music';
+      } else {
+        music.pause();
+        this.innerHTML = '<span><i class="fa fa-music" aria-hidden="true"></i></span> Play Music';
+      }
+    });
+  </script>
+
   <!-- Page Loader -->
   <div class="page-loader">
     <div class="loader">Loading...</div>
@@ -103,7 +144,7 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
             <li>
               <a href="" target="_blank">
                 <img src="images/mrdork3/logos/Epic/Epic_games_store_logo.png" width="25"
-                  alt="Wishlist ROOTED on Epic Games Store" style="margin-right: 5px" />
+                  alt="Wishlist Mr. Dork 3 on Epic Games Store" style="margin-right: 5px" />
               </a>
             </li>
             <!-- End Epic Games Store -->
@@ -174,7 +215,7 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
             <div class="wow fadeInUpShort" data-wow-delay=".5s">
               <p class="hs-line-6 opacity-07"></p>
               Powered by
-              <img src="images/mrdork3/logos/Unreal/logo_UE.png" alt="ROOTED powered by Unreal Engine" />
+              <img src="images/mrdork3/logos/Unreal/logo_UE.png" alt="Mr. Dork 3 powered by Unreal Engine" />
               </p>
             </div>
             <!-- End Powered by Unreal Engine -->
