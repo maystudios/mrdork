@@ -28,6 +28,20 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="css/floating-button.css" />
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('.mfp-inline').magnificPopup({
+        type: 'inline',
+        midClick: true // Ermöglicht das Öffnen beim Klicken auf den Button
+      });
+    });
+  </script>
+
+
+
 
 </head>
 
@@ -43,7 +57,7 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
 
   <!-- Audio für Musik -->
   <audio id="backgroundMusic" loop>
-    <source src="audio/mrdork3/SW_iDork.mp3" type="audio/mp3">
+    <source src="audio/mrdork3/SW_iDork.mp3_stop" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
 
@@ -337,8 +351,7 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
               </div>
 
               <div class="col-md-6 col-lg-4 mb-sm-50 mb-xs-30 wow linesAnimIn" data-splitting="lines">
-                The world of Mr. Dork 3 is vast, diverse, and packed with surprises at every turn.
-                From dark, eerie caves to sky-high platforms suspended in the clouds, every level
+                The world of Mr. Dork 3 is vast, diverse, and packed with surprises at every turn. Every level
                 presents unique challenges and environments. Each world has its own set of hazards,
                 secrets, and hidden pathways waiting to be discovered. As you progress, the levels
                 become more intricate, blending classic platforming elements with modern game mechanics,
@@ -369,7 +382,7 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
                 <div class="count-item">
                   <div class="count-bg wow scalexIn"></div>
                   <div class="relative wow fadeIn" data-wow-delay="1.1s">
-                    <div class="count-number">10</div>
+                    <div class="count-number">0</div>
                     <div class="count-descr">
                       <i class="fa fa-gamepad"></i>
                       <span class="count-title">Players</span>
@@ -384,7 +397,7 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
                 <div class="count-item">
                   <div class="count-bg wow scalexIn"></div>
                   <div class="relative wow fadeIn" data-wow-delay="1.2s">
-                    <div class="count-number">38</div>
+                    <div class="count-number">30</div>
                     <div class="count-descr">
                       <i class="fa fa-globe"></i>
                       <span class="count-title">Exciting Levels</span>
@@ -718,7 +731,7 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
               <dl class="call-action-2-text mb-60 mb-sm-30">
                 <dt>Exciting Levels:</dt>
                 <dd>
-                  Navigate through a total of 38 unique levels, including all 10 levels from Mr. Dork 1 and 28 levels
+                  Navigate through a total of 30 unique levels, including all 30 levels
                   from Mr. Dork 2,
                   each designed to test your skills and creativity.
                 </dd>
@@ -777,13 +790,25 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
                         focusable="false" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
                         <path
-                          d="M23 18h-2v2h-1v-2h-2v-1h2v-2h1v2h2v1zm-15.999-10c-2.493 0-4.227 2.383-1.866 6.839.774 1.464-.826 1.812-2.545 2.209-1.491.345-1.59 1.072-1.59 2.334l.002.618h1.329c0-1.918-.186-1.385 1.824-1.973 1.014-.295 1.91-.723 2.316-1.612.212-.463.355-1.22-.162-2.197-.952-1.798-1.219-3.374-.712-4.215.547-.909 2.27-.908 2.819.015.935 1.567-.793 3.982-1.02 4.982h1.396c.44-1 1.206-2.208 1.206-3.9.001-2.01-1.31-3.1-2.997-3.1zm7.754-1.556c.895-1.487 3.609-1.494 4.512.022.77 1.291.423 3.484-.949 6.017-.098.18-.17.351-.232.517h1.464c3.057-5.744.816-9-2.548-9-3.323 0-5.635 3.177-2.488 9.119 1.033 1.952-1.101 2.416-3.394 2.946-1.988.458-2.12 1.429-2.12 3.11l.003.825h1.331c0-2.069-.08-2.367 1.173-2.657 1.918-.442 3.729-.86 4.39-2.305.241-.527.401-1.397-.206-2.543-1.362-2.572-1.704-4.777-.936-6.051z" />
+                          d="M5 0c0 9.803 5.105 12.053 5.604 16h2.805c.497-3.947 5.591-6.197 5.591-16h-14zm7.006 14.62c-.408-.998-.969-1.959-1.548-2.953-1.422-2.438-3.011-5.162-3.379-9.667h9.842c-.368 4.506-1.953 7.23-3.372 9.669-.577.993-1.136 1.954-1.543 2.951zm-.006-3.073c-1.125-2.563-1.849-5.599-1.857-8.547h-1.383c.374 3.118 1.857 7.023 3.24 8.547zm12-9.547c-.372 4.105-2.808 8.091-6.873 9.438.297-.552.596-1.145.882-1.783 2.915-1.521 4.037-4.25 4.464-6.251h-2.688c.059-.45.103-.922.139-1.405h4.076zm-24 0c.372 4.105 2.808 8.091 6.873 9.438-.297-.552-.596-1.145-.882-1.783-2.915-1.521-4.037-4.25-4.464-6.251h2.688c-.058-.449-.102-.922-.138-1.404h-4.077zm13.438 15h-2.866c-.202 1.187-1.63 2.619-3.571 2.619v4.381h10v-4.381c-1.999 0-3.371-1.432-3.563-2.619zm2.562 6h-8v-2h8v2z" />
                       </svg>
                     </div>
-                    <h3 class="alt-features-title">Co-Op Multiplayer</h3>
+                    <h3 class="alt-features-title">Singleplayer Mode</h3>
                     <div class="alt-features-descr">
-                      Team up with friends in an engaging co-op mode where collaboration is key to overcoming intricate
-                      levels!
+                      <p>A classic mode where you navigate through thrilling levels alone!
+                      <div class="post-prev-more"><a href="#singleplayer-modal" class="text-link mfp-inline"
+                          tabindex="-1">Learn More</a></div>
+                      </p>
+                      <!-- Lightbox Modal -->
+                      <div id="singleplayer-modal" class="white-popup-block mfp-hide">
+                        <h3>Singleplayer Mode</h3>
+                        <p>The classic single-player mode where players navigate through the levels of the game.</p>
+                        <ul>
+                          <li>All Mr. Dork 2 levels are available.</li>
+                          <li>Future Mr. Dork 3 levels will also be unlocked and playable.</li>
+                        </ul>
+                      </div>
+                      <!-- End Lightbox Modal -->
                     </div>
                   </div>
                 </div>
@@ -799,11 +824,27 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
                           d="M20.554 9.583c-.729 1.291-1.823 2.096-3.092 3.027-1.483 1.091-3.142 2.319-4.647 4.567l-6.727-3.841c.919-2.241.7-4.73.518-6.78-.186-2.099-.259-3.417.434-3.651 1.123-.379 2.501 2.097 3.192 4.095 1.137-4.59 2.047-6.521 6.967-3.669 1.216.707 5.053 3.24 3.355 6.252m-10.173 11.692l-6.631-3.787 1.391-2.384 6.631 3.787-1.391 2.384zm7.82-19.68c-1.957-1.134-3.641-1.665-5.032-1.588-1.524.085-2.684.909-3.337 2.296-.924-1.13-2.122-1.793-3.496-1.275-2.158.814-1.937 3.302-1.723 5.706.191 2.155.408 4.598-.7 6.502l-2.913 4.991 10.11 5.773 2.907-4.984c1.429-2.435 3.055-3.631 4.63-4.789 1.068-.787 4.353-2.998 4.353-6.193 0-2.645-2.251-4.962-4.799-6.439" />
                       </svg>
                     </div>
-                    <h3 class="alt-features-title">Battle Mode</h3>
+                    <h3 class="alt-features-title">Infinity Mode</h3>
                     <div class="alt-features-descr">
-                      Compete against your friends in a thrilling battle mode, where quick reflexes and strategy
-                      determine the
-                      victor!
+                      <p>Endless adventures with new challenges every time!
+                      <div class="post-prev-more"><a href="#infinity-modal" class="text-link mfp-inline"
+                          tabindex="-1">Learn
+                          More</a></div>
+                      </p>
+                      <!-- Lightbox Modal -->
+                      <div id="infinity-modal" class="white-popup-block mfp-hide">
+                        <h3>Infinity Mode</h3>
+                        <p>Endless procedurally generated levels that provide new challenges every time.</p>
+                        <ul>
+                          <li><strong>The Floor is Lava:</strong> Vertical mode where players must climb upwards while
+                            lava
+                            rises. Goal: Survive as long as possible and climb as high as possible.</li>
+                          <li><strong>Endless Right:</strong> Horizontal mode where players run endlessly to the right.
+                            Goal:
+                            Cover as much distance as possible without the pressure of rising lava.</li>
+                        </ul>
+                      </div>
+                      <!-- End Lightbox Modal -->
                     </div>
                   </div>
                 </div>
@@ -816,12 +857,42 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
                         focusable="false" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
                         <path
-                          d="M5 0c0 9.803 5.105 12.053 5.604 16h2.805c.497-3.947 5.591-6.197 5.591-16h-14zm7.006 14.62c-.408-.998-.969-1.959-1.548-2.953-1.422-2.438-3.011-5.162-3.379-9.667h9.842c-.368 4.506-1.953 7.23-3.372 9.669-.577.993-1.136 1.954-1.543 2.951zm-.006-3.073c-1.125-2.563-1.849-5.599-1.857-8.547h-1.383c.374 3.118 1.857 7.023 3.24 8.547zm12-9.547c-.372 4.105-2.808 8.091-6.873 9.438.297-.552.596-1.145.882-1.783 2.915-1.521 4.037-4.25 4.464-6.251h-2.688c.059-.45.103-.922.139-1.405h4.076zm-24 0c.372 4.105 2.808 8.091 6.873 9.438-.297-.552-.596-1.145-.882-1.783-2.915-1.521-4.037-4.25-4.464-6.251h2.688c-.058-.449-.102-.922-.138-1.404h-4.077zm13.438 15h-2.866c-.202 1.187-1.63 2.619-3.571 2.619v4.381h10v-4.381c-1.999 0-3.371-1.432-3.563-2.619zm2.562 6h-8v-2h8v2z" />
+                          d="M23 18h-2v2h-1v-2h-2v-1h2v-2h1v2h2v1zm-15.999-10c-2.493 0-4.227 2.383-1.866 6.839.774 1.464-.826 1.812-2.545 2.209-1.491.345-1.59 1.072-1.59 2.334l.002.618h1.329c0-1.918-.186-1.385 1.824-1.973 1.014-.295 1.91-.723 2.316-1.612.212-.463.355-1.22-.162-2.197-.952-1.798-1.219-3.374-.712-4.215.547-.909 2.27-.908 2.819.015.935 1.567-.793 3.982-1.02 4.982h1.396c.44-1 1.206-2.208 1.206-3.9.001-2.01-1.31-3.1-2.997-3.1zm7.754-1.556c.895-1.487 3.609-1.494 4.512.022.77 1.291.423 3.484-.949 6.017-.098.18-.17.351-.232.517h1.464c3.057-5.744.816-9-2.548-9-3.323 0-5.635 3.177-2.488 9.119 1.033 1.952-1.101 2.416-3.394 2.946-1.988.458-2.12 1.429-2.12 3.11l.003.825h1.331c0-2.069-.08-2.367 1.173-2.657 1.918-.442 3.729-.86 4.39-2.305.241-.527.401-1.397-.206-2.543-1.362-2.572-1.704-4.777-.936-6.051z" />
                       </svg>
                     </div>
-                    <h3 class="alt-features-title">Dynamic Challenges</h3>
+                    <h3 class="alt-features-title">Battle Mode</h3>
                     <div class="alt-features-descr">
-                      Face dynamic challenges that will keep you on your toes and provide endless fun in each session!
+                      <p>Compete head-to-head against friends in intense battles!
+                      <div class="post-prev-more"><a href="#battle-modal" class="text-link mfp-inline"
+                          tabindex="-1">Learn
+                          More</a></div>
+                      </p>
+                      <!-- Lightbox Modal -->
+                      <div id="battle-modal" class="white-popup-block mfp-hide">
+                        <h3>Battle Mode</h3>
+                        <p>A competitive mode where two players face off, either in classic levels or in Infinity modes.
+                        </p>
+                        <ul>
+                          <li><strong>Classic Level Battles:</strong> Players start in the same level and can see each
+                            other
+                            (light gray outline) but cannot directly interact. Goal: Complete the level first or reach a
+                            specific level the fastest.</li>
+                          <li><strong>Infinity Battles:</strong>
+                            <ul>
+                              <li><strong>The Floor is Lava – Battle:</strong> Both players start in the lava mode and
+                                must
+                                climb up. Winner is the one who survives longer or climbs higher.</li>
+                              <li><strong>Endless Right – Battle:</strong> Players compete to cover the longest distance
+                                or be
+                                faster in the Endless Right mode.</li>
+                            </ul>
+                          </li>
+                        </ul>
+                        <strong>Technical Details:</strong> Supports couch co-op with split-screen or dynamic
+                        split-screen
+                        where the screen splits as players move apart.
+                      </div>
+                      <!-- End Lightbox Modal -->
                     </div>
                   </div>
                 </div>
@@ -837,9 +908,26 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
                           d="M12 0l-11 6v12.131l11 5.869 11-5.869v-12.066l-11-6.065zm7.91 6.646l-7.905 4.218-7.872-4.294 7.862-4.289 7.915 4.365zm-16.91 1.584l8 4.363v8.607l-8-4.268v-8.702zm10 12.97v-8.6l8-4.269v8.6l-8 4.269z" />
                       </svg>
                     </div>
-                    <h3 class="alt-features-title">Exciting New Modes</h3>
+                    <h3 class="alt-features-title">Co-Op Mode</h3>
                     <div class="alt-features-descr">
-                      Look forward to new game modes that enhance replayability and keep the gameplay fresh!
+                      <p>Team up with a friend to conquer challenging levels!
+                      <div class="post-prev-more"><a href="#coop-modal" class="text-link mfp-inline" tabindex="-1">Learn
+                          More</a></div>
+                      </p>
+                      <!-- Lightbox Modal -->
+                      <div id="coop-modal" class="white-popup-block mfp-hide">
+                        <h3>Co-Op Mode</h3>
+                        <p>A cooperative mode where two players work together to complete levels.</p>
+                        <ul>
+                          <li>Available only for Mr. Dork 3 levels.</li>
+                          <li>Levels are designed so that players must cooperate to progress. For example, one player
+                            may need
+                            to solve a puzzle for the other to continue.</li>
+                          <li>Special mechanics ensure that both players collaborate to overcome certain challenges.
+                          </li>
+                        </ul>
+                      </div>
+                      <!-- End Lightbox Modal -->
                     </div>
                   </div>
                 </div>
@@ -853,13 +941,13 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
             <div class="col-lg-6">
               <div class="call-action-3-images mt-xs-0 text-end">
                 <div class="call-action-3-image-1">
-                  <img src="images/mrdork3/animation/run.gif" alt="" class="wow scaleOutIn" data-wow-duration="1.2s"
-                    data-wow-offset="205" />
+                  <img src="images/mrdork3/animation/Team/run_blue.gif" alt="" class="wow scaleOutIn"
+                    data-wow-duration="1.2s" data-wow-offset="205" />
                 </div>
 
                 <div class="call-action-3-image-2-wrap d-flex align-items-center">
                   <div class="call-action-3-image-2">
-                    <img src="images/mrdork3/animation/run.gif" alt="" class="wow scaleOutIn"
+                    <img src="images/mrdork3/animation/Team/run_red.gif" alt="" class="wow scaleOutIn"
                       data-wow-duration="1.2s" />
                   </div>
                 </div>
@@ -893,7 +981,8 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
                     Join Our Thriving Community
                   </h3>
                   <div class="banner-description">
-                    Be part of the **Mr. Dork 3** community! Connect with fellow players on our Discord server to share
+                    Be part of the <strong>Mr. Dork 3</strong> community! Connect with fellow players on our Discord
+                    server to share
                     tips,
                     strategies, and experiences. Join us for exciting co-op gameplay and competitive battles that bring
                     everyone together. Your feedback and ideas are vital as we continue to develop an engaging and
