@@ -1,0 +1,133 @@
+/* Mr. Dork 3 — cookie consent banner & preferences modal
+   Self-contained, prefixed (.cc-*) so it never collides with Bootstrap/theme CSS. */
+
+.cc-banner {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99999;
+  background: #161616;
+  color: #ededed;
+  box-shadow: 0 -2px 24px rgba(0, 0, 0, 0.45);
+  padding: 20px 24px;
+  font-size: 14px;
+  line-height: 1.55;
+  font-family: inherit;
+}
+.cc-banner[hidden] { display: none; }
+
+.cc-banner__inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  gap: 22px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.cc-banner__text { flex: 1 1 440px; }
+.cc-banner__title { font-weight: 700; font-size: 16px; margin: 0 0 6px; }
+.cc-banner__text p { margin: 0; }
+.cc-banner a { color: #7db1ff; text-decoration: underline; }
+.cc-banner a:hover { color: #a9ccff; }
+
+.cc-actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+
+.cc-btn {
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 30px;
+  padding: 11px 24px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  white-space: nowrap;
+  font-family: inherit;
+  line-height: 1.2;
+}
+.cc-btn--primary { background: #ffffff; color: #111111; }
+.cc-btn--primary:hover { background: #7db1ff; color: #ffffff; }
+.cc-btn--ghost { background: transparent; color: #ededed; border-color: rgba(255, 255, 255, 0.45); }
+.cc-btn--ghost:hover { border-color: #ffffff; }
+
+/* Preferences modal */
+.cc-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.65);
+  padding: 20px;
+}
+.cc-modal[hidden] { display: none; }
+
+.cc-modal__box {
+  background: #1d1d1d;
+  color: #ededed;
+  max-width: 560px;
+  width: 100%;
+  border-radius: 12px;
+  padding: 30px;
+  max-height: 86vh;
+  overflow-y: auto;
+}
+.cc-modal__title { font-size: 21px; font-weight: 700; margin: 0 0 10px; }
+.cc-modal__intro { font-size: 14px; color: #cfcfcf; margin: 0 0 8px; }
+
+.cc-cat {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 18px 0;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.cc-cat__main { flex: 1; }
+.cc-cat__name { font-weight: 700; margin: 0 0 4px; font-size: 15px; }
+.cc-cat__desc { margin: 0; font-size: 13px; color: #b9b9b9; }
+.cc-cat__always { font-size: 12px; font-weight: 600; color: #8ad28a; white-space: nowrap; padding-top: 3px; }
+
+/* Toggle switch */
+.cc-switch { position: relative; display: inline-block; width: 46px; height: 26px; flex: 0 0 auto; }
+.cc-switch input { opacity: 0; width: 0; height: 0; position: absolute; }
+.cc-slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background: #555;
+  border-radius: 26px;
+  transition: background 0.2s;
+}
+.cc-slider::before {
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  top: 3px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+.cc-switch input:checked + .cc-slider { background: #4a90e2; }
+.cc-switch input:checked + .cc-slider::before { transform: translateX(20px); }
+.cc-switch input:focus-visible + .cc-slider { outline: 2px solid #7db1ff; outline-offset: 2px; }
+.cc-switch input:disabled + .cc-slider { opacity: 0.6; cursor: not-allowed; }
+
+.cc-modal__actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 22px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+  .cc-banner { padding: 16px; }
+  .cc-actions { width: 100%; }
+  .cc-actions .cc-btn { flex: 1 1 auto; text-align: center; }
+  .cc-modal__actions .cc-btn { flex: 1 1 auto; text-align: center; }
+}

@@ -58,14 +58,28 @@
     });
   </script>
 
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-D0MBQ4MRH8"></script>
+  <!-- Google Analytics 4 — consent-gated (Consent Mode v2).
+       gtag.js is loaded by js/cookie-consent.js ONLY after the visitor accepts "Statistics". -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-D0MBQ4MRH8');
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+      wait_for_update: 500
+    });
+    window.MRDORK_GA_ID = 'G-D0MBQ4MRH8';
   </script>
+
+  <!-- i18n (EN / DE) -->
+  <script defer src="js/i18n-translations.js"></script>
+  <script defer src="js/i18n.js"></script>
+
+  <!-- Cookie consent (gates Google Analytics 4) -->
+  <link rel="stylesheet" href="css/cookie-consent.css" />
+  <script defer src="js/cookie-consent.js"></script>
 
   <!-- Additional Accessibility Improvements -->
   <meta name="robots" content="index, follow" />
@@ -187,7 +201,7 @@
   <!-- End Page Loader -->
 
   <!-- Skip to Content -->
-  <a href="#main" class="btn skip-to-content">Skip to Content</a>
+  <a href="#main" class="btn skip-to-content" data-i18n="skip.toContent">Skip to Content</a>
   <!-- End Skip to Content -->
 
   <!-- Page Wrap -->
@@ -213,27 +227,27 @@
           <ul class="clearlist scroll-nav local-scroll">
             <!-- Item With Sub -->
             <li>
-              <a href="#main" class="mn-has-sub active">Home </a>
+              <a href="#main" class="mn-has-sub active" data-i18n="nav.home">Home</a>
             </li>
 
             <li>
-              <a href="#about" class="">About </a>
+              <a href="#about" class="" data-i18n="nav.about">About</a>
             </li>
 
             <li>
-              <a href="#early-access" class="">Early Access </a>
+              <a href="#early-access" class="" data-i18n="nav.earlyAccess">Early Access</a>
             </li>
 
             <li>
-              <a href="timeline.html" class="">Timeline </a>
+              <a href="timeline.html" class="" data-i18n="nav.timeline">Timeline</a>
             </li>
 
             <li>
-              <a href="faq.html" class="">FAQ </a>
+              <a href="faq.html" class="" data-i18n="nav.faq">FAQ</a>
             </li>
 
             <li>
-              <a href="#community" class="">Community </a>
+              <a href="#community" class="" data-i18n="nav.community">Community</a>
             </li>
 
             <!-- End Item With Sub -->
@@ -241,8 +255,8 @@
             <!-- Steam -->
             <li>
               <a href="" target="_blank">
-                <img src="images/mrdork3/logos/Steam/steam-logo.png" width="25" alt="Wishlist MrDork 3 on Steam"
-                  style="margin-right: 5px" />
+                <img src="images/mrdork3/logos/Steam/steam-logo.png" width="25" alt="Wishlist Mr. Dork 3 on Steam"
+                  data-i18n-attr="alt:nav.steamAlt" style="margin-right: 5px" />
               </a>
             </li>
             <!-- End Steam -->
@@ -251,19 +265,19 @@
             <li>
               <a href="" target="_blank">
                 <img src="images/mrdork3/logos/Epic/Epic_games_store_logo.png" width="25"
-                  alt="Wishlist Mr. Dork 3 on Epic Games Store" style="margin-right: 5px" />
+                  alt="Wishlist Mr. Dork 3 on Epic Games Store" data-i18n-attr="alt:nav.epicAlt"
+                  style="margin-right: 5px" />
               </a>
             </li>
             <!-- End Epic Games Store -->
 
             <!-- Languages -->
             <li>
-              <a href="#" class="mn-has-sub">Eng <i class="mn-has-sub-icon"></i></a>
+              <a href="#" class="mn-has-sub"><span data-i18n-current>EN</span> <i class="mn-has-sub-icon"></i></a>
 
               <ul class="mn-sub">
-                <li><a href="">English</a></li>
-                <li><a href="">French</a></li>
-                <li><a href="">German</a></li>
+                <li><a href="#" data-set-lang="en" data-i18n="lang.english">English</a></li>
+                <li><a href="#" data-set-lang="de" data-i18n="lang.german">German</a></li>
               </ul>
             </li>
             <!-- End Languages -->
@@ -1019,114 +1033,103 @@
           <div class="text-center mb-80 mb-sm-50">
             <h2 class="section-title">Our Works</h2>
             <p class="section-title-descr">
-              Look at selection of our projects
+              A look at Mr. Dork 3 in action — screenshots straight from the game.
             </p>
           </div>
-
-          <!-- Works Filter -->
-          <div class="works-filter text-center">
-            <a href="#" class="filter active" role="button" aria-pressed="true" data-filter="*">All works</a>
-            <a href="#branding" class="filter" role="button" aria-pressed="false" data-filter=".branding">School
-              Dayz</a>
-            <a href="#design" class="filter" role="button" aria-pressed="false" data-filter=".design">Park Panic</a>
-            <a href="#photography" class="filter" role="button" aria-pressed="false" data-filter=".photography">Creepy
-              Forest</a>
-          </div>
-          <!-- End Works Filter -->
 
           <!-- Works Grid -->
           <ul class="works-grid work-grid-3 work-grid-gut clearfix hover-white hide-titles" id="work-grid">
             <!-- Work Item (Lightbox) -->
-            <li class="work-item mix photography">
+            <li class="work-item mix">
               <a href="images/mrdork3/gameplay/HighresScreenshot00005.png" class="work-lightbox-link mfp-image">
                 <div class="work-img">
                   <div class="work-img-bg wow-p scalexIn"></div>
-                  <img src="images/mrdork3/gameplay/HighresScreenshot00005.png" alt="Work Description"
+                  <img src="images/mrdork3/gameplay/HighresScreenshot00005.png" alt="Mr. Dork 3 gameplay screenshot"
                     class="wow-p fadeIn" data-wow-delay="1s" />
                 </div>
                 <div class="work-intro">
-                  <h3 class="work-title">Green Leaf</h3>
-                  <div class="work-descr">Lightbox</div>
+                  <h3 class="work-title">Mr. Dork 3</h3>
+                  <div class="work-descr">Gameplay</div>
                 </div>
               </a>
             </li>
             <!-- End Work Item -->
 
             <!-- Work Item (Lightbox) -->
-            <li class="work-item mix photography">
-              <a href="images/mrdork3/gameplay/HighresScreenshot00005.png" class="work-lightbox-link mfp-image">
+            <li class="work-item mix">
+              <a href="images/mrdork3/gameplay/HighresScreenshot00006.png" class="work-lightbox-link mfp-image">
                 <div class="work-img">
                   <div class="work-img-bg wow-p scalexIn"></div>
-                  <img src="images/mrdork3/gameplay/HighresScreenshot00005.png" alt="Work Description"
+                  <img src="images/mrdork3/gameplay/HighresScreenshot00006.png" alt="Mr. Dork 3 platforming level"
                     class="wow-p fadeIn" data-wow-delay="1s" />
                 </div>
                 <div class="work-intro">
-                  <h3 class="work-title">Green Leaf</h3>
-                  <div class="work-descr">Lightbox</div>
-                </div>
-              </a>
-            </li>
-            <!-- End Work Item -->
-
-            <!-- Work Item (External Page) -->
-            <li class="work-item mix branding">
-              <a href="portfolio-single-1.html" class="work-ext-link">
-                <div class="work-img">
-                  <div class="work-img-bg wow-p scalexIn"></div>
-                  <img src="images/portfolio/projects-3.jpg" alt="Work Description" class="wow-p fadeIn"
-                    data-wow-delay="1s" />
-                </div>
-                <div class="work-intro">
-                  <h3 class="work-title">Green Branch</h3>
-                  <div class="work-descr">External Page</div>
-                </div>
-              </a>
-            </li>
-            <!-- End Work Item -->
-
-            <!-- Work Item (External Page) -->
-            <li class="work-item mix design photography">
-              <a href="portfolio-single-1.html" class="work-ext-link">
-                <div class="work-img">
-                  <div class="work-img-bg wow-p scalexIn"></div>
-                  <img src="images/portfolio/projects-4.jpg" alt="Work Description" class="wow-p fadeIn"
-                    data-wow-delay="1s" />
-                </div>
-                <div class="work-intro">
-                  <h3 class="work-title">White Chair</h3>
-                  <div class="work-descr">External Page</div>
-                </div>
-              </a>
-            </li>
-            <!-- End Work Item -->
-
-            <!-- Work Item (External Page) -->
-            <li class="work-item mix design">
-              <a href="portfolio-single-1.html" class="work-ext-link">
-                <div class="work-img">
-                  <div class="work-img-bg wow-p scalexIn"></div>
-                  <img src="images/portfolio/projects-5.jpg" alt="Work Description" class="wow-p fadeIn"
-                    data-wow-delay="1s" />
-                </div>
-                <div class="work-intro">
-                  <h3 class="work-title">White Table</h3>
-                  <div class="work-descr">External Page</div>
+                  <h3 class="work-title">Mr. Dork 3</h3>
+                  <div class="work-descr">Gameplay</div>
                 </div>
               </a>
             </li>
             <!-- End Work Item -->
 
             <!-- Work Item (Lightbox) -->
-            <li class="work-item mix design branding">
-              <a href="images/portfolio/full-project-6.jpg" class="work-lightbox-link mfp-image">
+            <li class="work-item mix">
+              <a href="images/mrdork3/gameplay/HighresScreenshot00007.png" class="work-lightbox-link mfp-image">
                 <div class="work-img">
                   <div class="work-img-bg wow-p scalexIn"></div>
-                  <img src="images/portfolio/projects-6.jpg" alt="Work Description" class="wow-p fadeIn"
-                    data-wow-delay="1s" />
+                  <img src="images/mrdork3/gameplay/HighresScreenshot00007.png" alt="Mr. Dork 3 in-game scene"
+                    class="wow-p fadeIn" data-wow-delay="1s" />
                 </div>
                 <div class="work-intro">
-                  <h3 class="work-title">The Book</h3>
-                  <div class="work-descr">Lightbox</div>
+                  <h3 class="work-title">Mr. Dork 3</h3>
+                  <div class="work-descr">Gameplay</div>
+                </div>
+              </a>
+            </li>
+            <!-- End Work Item -->
+
+            <!-- Work Item (Lightbox) -->
+            <li class="work-item mix">
+              <a href="images/mrdork3/gameplay/HighresScreenshot00008.png" class="work-lightbox-link mfp-image">
+                <div class="work-img">
+                  <div class="work-img-bg wow-p scalexIn"></div>
+                  <img src="images/mrdork3/gameplay/HighresScreenshot00008.png" alt="Mr. Dork 3 platforming action"
+                    class="wow-p fadeIn" data-wow-delay="1s" />
+                </div>
+                <div class="work-intro">
+                  <h3 class="work-title">Mr. Dork 3</h3>
+                  <div class="work-descr">Gameplay</div>
+                </div>
+              </a>
+            </li>
+            <!-- End Work Item -->
+
+            <!-- Work Item (Lightbox) -->
+            <li class="work-item mix">
+              <a href="images/mrdork3/gameplay/HighresScreenshot00009.png" class="work-lightbox-link mfp-image">
+                <div class="work-img">
+                  <div class="work-img-bg wow-p scalexIn"></div>
+                  <img src="images/mrdork3/gameplay/HighresScreenshot00009.png" alt="Mr. Dork 3 colorful game world"
+                    class="wow-p fadeIn" data-wow-delay="1s" />
+                </div>
+                <div class="work-intro">
+                  <h3 class="work-title">Mr. Dork 3</h3>
+                  <div class="work-descr">Gameplay</div>
+                </div>
+              </a>
+            </li>
+            <!-- End Work Item -->
+
+            <!-- Work Item (Lightbox) -->
+            <li class="work-item mix">
+              <a href="images/mrdork3/gameplay/HighresScreenshot00012.png" class="work-lightbox-link mfp-image">
+                <div class="work-img">
+                  <div class="work-img-bg wow-p scalexIn"></div>
+                  <img src="images/mrdork3/gameplay/HighresScreenshot00012.png" alt="Mr. Dork 3 gameplay screenshot"
+                    class="wow-p fadeIn" data-wow-delay="1s" />
+                </div>
+                <div class="work-intro">
+                  <h3 class="work-title">Mr. Dork 3</h3>
+                  <div class="work-descr">Gameplay</div>
                 </div>
               </a>
             </li>
@@ -1148,7 +1151,7 @@
                 </div>
                 <div class="col-lg-3 pt-10">
                   <div class="local-scroll">
-                    <a href="https://maystudios.github.io/MayStudios-Page/"
+                    <a href="https://maystudios.net"
                       class="btn btn-mod btn-large btn-round">MayStudios</a>
                   </div>
                   <div class="local-scroll mt-2">
@@ -1235,7 +1238,7 @@
                 <p class="section-title-descr">Discover the latest developments and features coming to Mr. Dork 3.</p>
               </div>
               <div class="col-sm-3 text-sm-end pt-30 pt-xs-0">
-                <a href="under-construction.html" class="section-more">Behind the Scenes
+                <a href="timeline.html" class="section-more">Behind the Scenes
                   <i class="fa fa-angle-right" aria-hidden="true"></i></a>
               </div>
             </div>
@@ -1245,13 +1248,13 @@
             <!-- Post Item -->
             <div class="col-sm-6 col-md-4 col-lg-4 mb-md-50">
               <div class="post-prev-img">
-                <a href="blog-single-sidebar-right.html" tabindex="-1"><img src="images/blog/post-prev-1.jpg"
-                    alt="Thumbnail for blog post 1 related to Mr. Dork 3 updates" class="wow scaleOutIn"
+                <a href="timeline.html" tabindex="-1"><img src="images/mrdork3/gameplay/HighresScreenshot00013.png"
+                    alt="Mr. Dork 3 co-op multiplayer mode in development" class="wow scaleOutIn"
                     data-wow-duration="1.2s" /></a>
               </div>
 
               <h3 class="post-prev-title">
-                <a href="blog-single-sidebar-right.html">Developer Insights: Co-Op Multiplayer Mode</a>
+                <a href="timeline.html">Developer Insights: Co-Op Multiplayer Mode</a>
               </h3>
 
               <div class="post-prev-info">
@@ -1267,7 +1270,7 @@
               </div>
 
               <div class="post-prev-more">
-                <a href="blog-single-sidebar-right.html" class="text-link" tabindex="-1">Learn More</a>
+                <a href="timeline.html" class="text-link" tabindex="-1">Learn More</a>
               </div>
             </div>
             <!-- End Post Item -->
@@ -1275,12 +1278,12 @@
             <!-- Post Item -->
             <div class="col-sm-6 col-md-4 col-lg-4 mb-md-50">
               <div class="post-prev-img">
-                <a href="blog-single-sidebar-right.html" tabindex="-1"><img src="images/blog/post-prev-2.jpg" alt=""
+                <a href="timeline.html" tabindex="-1"><img src="images/mrdork3/gameplay/HighresScreenshot00014.png" alt="Mr. Dork 3 battle mode development"
                     class="wow scaleOutIn" data-wow-duration="1.2s" /></a>
               </div>
 
               <h3 class="post-prev-title">
-                <a href="blog-single-sidebar-right.html">Behind the Scenes: Battle Mode Development</a>
+                <a href="timeline.html">Behind the Scenes: Battle Mode Development</a>
               </h3>
 
               <div class="post-prev-info">
@@ -1296,7 +1299,7 @@
               </div>
 
               <div class="post-prev-more">
-                <a href="blog-single-sidebar-right.html" class="text-link" tabindex="-1">Learn More</a>
+                <a href="timeline.html" class="text-link" tabindex="-1">Learn More</a>
               </div>
             </div>
             <!-- End Behind the Scenes Item -->
@@ -1304,12 +1307,12 @@
             <!-- Post Item -->
             <div class="col-sm-6 col-md-4 col-lg-4 mb-md-50">
               <div class="post-prev-img">
-                <a href="blog-single-sidebar-right.html" tabindex="-1"><img src="images/blog/post-prev-3.jpg" alt=""
+                <a href="timeline.html" tabindex="-1"><img src="images/mrdork3/gameplay/HighresScreenshot00015.png" alt="Mr. Dork 3 new features and enhancements"
                     class="wow scaleOutIn" data-wow-duration="1.2s" /></a>
               </div>
 
               <h3 class="post-prev-title">
-                <a href="blog-single-sidebar-right.html">Progress Update: New Features and Enhancements</a>
+                <a href="timeline.html">Progress Update: New Features and Enhancements</a>
               </h3>
 
               <div class="post-prev-info">
@@ -1325,7 +1328,7 @@
               </div>
 
               <div class="post-prev-more">
-                <a href="blog-single-sidebar-right.html" class="text-link" tabindex="-1">Learn More</a>
+                <a href="timeline.html" class="text-link" tabindex="-1">Learn More</a>
               </div>
             </div>
             <!-- End Post Item -->
@@ -1408,7 +1411,7 @@
         <div class="footer-text">
           <!-- Copyright -->
           <div class="footer-copy">
-            <a href="under-construction.html">
+            <a href="https://maystudios.net">
               &copy; MayStudios
             </a>
           </div>
