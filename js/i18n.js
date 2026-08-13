@@ -1,5 +1,5 @@
 /*
- * Mr. Dork 3 — lightweight runtime i18n
+ * Mr. Dork 3 lightweight runtime i18n
  * --------------------------------------
  * - Translatable text:        <h2 data-i18n="nav.home">Home</h2>
  * - Translatable attributes:  <img data-i18n-attr="alt:work.alt1">
@@ -20,6 +20,7 @@
   var STORAGE_KEY = "mrdork_lang";
   var SUPPORTED = ["en", "de"]; // add "fr" here once French strings exist
   var DEFAULT = "en";
+  var originalText = typeof WeakMap === "function" ? new WeakMap() : null;
 
   function dicts() {
     var d = window.MRDORK_I18N || {};
@@ -36,10 +37,13 @@
     if (stored && SUPPORTED.indexOf(stored) !== -1) {
       return stored;
     }
-    var nav = (window.navigator.language || window.navigator.userLanguage || "").toLowerCase();
-    for (var i = 0; i < SUPPORTED.length; i++) {
-      if (nav.indexOf(SUPPORTED[i]) === 0) {
-        return SUPPORTED[i];
+    var requested = window.navigator.languages || [window.navigator.language || window.navigator.userLanguage || ""];
+    for (var n = 0; n < requested.length; n++) {
+      var nav = String(requested[n]).toLowerCase().split("-")[0];
+      for (var i = 0; i < SUPPORTED.length; i++) {
+        if (nav === SUPPORTED[i]) {
+          return SUPPORTED[i];
+        }
       }
     }
     return DEFAULT;
@@ -84,6 +88,43 @@
     }
   }
 
+  function normalizeText(value) {
+    return value.replace(/\s+/g, " ").trim();
+  }
+
+  function translatedText(source, lang) {
+    if (lang === DEFAULT) return source;
+    var tables = window.MRDORK_TEXT_I18N || {};
+    var table = tables[lang] || {};
+    var translated = table[normalizeText(source)];
+    if (translated == null) return source;
+
+    var leading = (source.match(/^\s*/) || [""])[0];
+    var trailing = (source.match(/\s*$/) || [""])[0];
+    return leading + translated + trailing;
+  }
+
+  function applyTextNodes(lang) {
+    if (!document.body || !document.createTreeWalker) return;
+    var filter = window.NodeFilter || { SHOW_TEXT: 4, FILTER_ACCEPT: 1, FILTER_REJECT: 2 };
+    var walker = document.createTreeWalker(document.documentElement, filter.SHOW_TEXT, {
+      acceptNode: function (node) {
+        var parent = node.parentElement;
+        if (!parent || !normalizeText(node.nodeValue || "")) return filter.FILTER_REJECT;
+        if (/^(SCRIPT|STYLE|NOSCRIPT|TEXTAREA|CODE|PRE)$/i.test(parent.tagName)) return filter.FILTER_REJECT;
+        if (parent.closest && parent.closest("[data-i18n]")) return filter.FILTER_REJECT;
+        return filter.FILTER_ACCEPT;
+      }
+    });
+
+    var node;
+    while ((node = walker.nextNode())) {
+      var source = originalText && originalText.has(node) ? originalText.get(node) : node.nodeValue;
+      if (originalText && !originalText.has(node)) originalText.set(node, source);
+      node.nodeValue = translatedText(source, lang);
+    }
+  }
+
   function apply(lang) {
     if (SUPPORTED.indexOf(lang) === -1) {
       lang = DEFAULT;
@@ -95,9 +136,17 @@
       applyToElement(nodes[i], lang);
     }
 
+    applyTextNodes(lang);
+
     var labels = document.querySelectorAll("[data-i18n-current]");
     for (var j = 0; j < labels.length; j++) {
       labels[j].textContent = lang.toUpperCase();
+    }
+
+    var switchers = document.querySelectorAll("[data-set-lang]");
+    for (var k = 0; k < switchers.length; k++) {
+      var isCurrent = switchers[k].getAttribute("data-set-lang") === lang;
+      switchers[k].setAttribute("aria-current", isCurrent ? "true" : "false");
     }
 
     try {
@@ -106,7 +155,7 @@
       /* ignore */
     }
 
-    // let other features (cookie banner, music button, …) react to a change.
+    // Let other features such as cookie consent and music react to a change.
     try {
       window.dispatchEvent(new CustomEvent("i18n:changed", { detail: { lang: lang } }));
     } catch (e) {
@@ -133,8 +182,11 @@
     });
   }
 
+  var initialLanguage = detectLang();
+  document.documentElement.setAttribute("lang", initialLanguage);
+
   function init() {
-    apply(detectLang());
+    apply(initialLanguage);
     bindSwitchers();
   }
 

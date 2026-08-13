@@ -4,14 +4,23 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
 <html lang="en">
 
 <head>
-  <title>Rhythm &mdash; One & Multi Page Creative Template</title>
-  <meta name="description" content="Rhythm &mdash; One & Multi Page Creative Template" />
+  <title>Mr. Dork 3: Legal Notice</title>
+  <meta name="description" content="Legal notice for the Mr. Dork 3 website." />
   <meta charset="utf-8" />
   <meta name="author" content="https://themeforest.net/user/bestlooker/portfolio" />
   <!--[if IE
       ]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"
     /><![endif]-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Privacy-first Analytics: Google is contacted only after an explicit opt-in. -->
+  <script src="js/analytics-init.js?v=1"></script>
+  <link rel="stylesheet" href="css/cookie-consent.css?v=2" />
+  <script defer src="js/i18n-translations.js?v=2"></script>
+  <script defer src="js/i18n-content.js?v=1"></script>
+  <script defer src="js/i18n-legal-content.js?v=1"></script>
+  <script defer src="js/i18n.js?v=2"></script>
+  <script defer src="js/cookie-consent.js?v=2"></script>
 
   <!-- Favicons -->
   <link rel="shortcut icon" href="images/favicon.png" />
@@ -36,7 +45,7 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
   <!-- End Page Loader -->
 
   <!-- Skip to Content -->
-  <a href="#main" class="btn skip-to-content">Skip to Content</a>
+  <a href="#main" class="btn skip-to-content" data-i18n="skip.toContent">Skip to Content</a>
   <!-- End Skip to Content -->
 
   <!-- Page Wrap -->
@@ -62,27 +71,27 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
           <ul class="clearlist scroll-nav local-scroll">
             <!-- Item With Sub -->
             <li>
-              <a href="#main" class="mn-has-sub active">Home </a>
+              <a href="index.html#main" class="mn-has-sub" data-i18n="nav.home">Home</a>
             </li>
 
             <li>
-              <a href="#about" class="">About </a>
+              <a href="index.html#about" data-i18n="nav.about">About</a>
             </li>
 
             <li>
-              <a href="#early-access" class="">Early Access </a>
+              <a href="index.html#early-access" data-i18n="nav.earlyAccess">Early Access</a>
             </li>
 
             <li>
-              <a href="timeline.html" class="">Timeline </a>
+              <a href="timeline.html" data-i18n="nav.timeline">Timeline</a>
             </li>
 
             <li>
-              <a href="faq.html" class="">FAQ </a>
+              <a href="faq.html" data-i18n="nav.faq">FAQ</a>
             </li>
 
             <li>
-              <a href="#community" class="">Community </a>
+              <a href="index.html#community" data-i18n="nav.community">Community</a>
             </li>
 
             <!-- End Item With Sub -->
@@ -93,7 +102,8 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
 
             <!-- Steam -->
             <li>
-              <a href="" target="_blank">
+              <a href="https://store.steampowered.com/app/3274870/Mr_Dork_3_One_Last_Doodle/" target="_blank"
+                rel="noopener noreferrer">
                 <img src="images/mrdork3/logos/Steam/steam-logo.png" width="25" alt="Wishlist MrDork 3 on Steam"
                   style="margin-right: 5px" />
               </a>
@@ -102,7 +112,7 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
 
             <!-- Epic Games Store -->
             <li>
-              <a href="" target="_blank">
+              <a href="coming-soon.html">
                 <img src="images/mrdork3/logos/Epic/Epic_games_store_logo.png" width="25"
                   alt="Wishlist Mr. Dork 3 on Epic Games Store" style="margin-right: 5px" />
               </a>
@@ -111,12 +121,11 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
 
             <!-- Languages -->
             <li>
-              <a href="#" class="mn-has-sub">Eng <i class="mn-has-sub-icon"></i></a>
+              <a href="#" class="mn-has-sub"><span data-i18n-current>EN</span> <i class="mn-has-sub-icon"></i></a>
 
               <ul class="mn-sub">
-                <li><a href="">English</a></li>
-                <li><a href="">French</a></li>
-                <li><a href="">German</a></li>
+                <li><a href="#" data-set-lang="en" data-i18n="lang.english">English</a></li>
+                <li><a href="#" data-set-lang="de" data-i18n="lang.german">German</a></li>
               </ul>
             </li>
             <!-- End Languages -->
@@ -227,7 +236,8 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
           <a href="./faq.html">FAQ</a> &bull;
           <a href="./legal.html">Legal Notice</a> &bull;
           <a href="./tos.html">Terms of Sale</a> &bull;
-          <a href="./policy.html">Privacy Policy</a>
+          <a href="./policy.html">Privacy Policy</a> &bull;
+          <a href="#" data-cookie-settings data-i18n="cookie.reopen">Cookie settings</a>
         </div>
         <!-- Social Links -->
         <div class="footer-social-links mb-90 mb-xs-40">
@@ -267,8 +277,6 @@ You can find the code of your language here - https://www.w3schools.com/tags/ref
           top</span></a>
     </div>
     <!-- End Top Link -->
-    </footer>
-    <!-- End Footer -->
   </div>
   <!-- End Page Wrap -->
 

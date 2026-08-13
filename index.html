@@ -42,44 +42,21 @@
   <link rel="stylesheet" href="css/owl.carousel.css" />
   <link rel="stylesheet" href="css/animate.min.css" />
   <link rel="stylesheet" href="css/splitting.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link rel="stylesheet" href="css/all.min.css" />
   <link rel="stylesheet" href="css/floating-button.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" />
 
-  <!-- JavaScript Libraries -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
-  <script>
-    $(document).ready(function () {
-      $('.mfp-inline').magnificPopup({
-        type: 'inline',
-        midClick: true
-      });
-    });
-  </script>
-
-  <!-- Google Analytics 4 — consent-gated (Consent Mode v2).
+  <!-- Google Analytics 4 consent-gated with Consent Mode v2.
        gtag.js is loaded by js/cookie-consent.js ONLY after the visitor accepts "Statistics". -->
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('consent', 'default', {
-      ad_storage: 'denied',
-      ad_user_data: 'denied',
-      ad_personalization: 'denied',
-      analytics_storage: 'denied',
-      wait_for_update: 500
-    });
-    window.MRDORK_GA_ID = 'G-D0MBQ4MRH8';
-  </script>
+  <script src="js/analytics-init.js?v=1"></script>
 
   <!-- i18n (EN / DE) -->
-  <script defer src="js/i18n-translations.js"></script>
-  <script defer src="js/i18n.js"></script>
+  <script defer src="js/i18n-translations.js?v=2"></script>
+  <script defer src="js/i18n-content.js?v=1"></script>
+  <script defer src="js/i18n.js?v=2"></script>
 
   <!-- Cookie consent (gates Google Analytics 4) -->
-  <link rel="stylesheet" href="css/cookie-consent.css" />
-  <script defer src="js/cookie-consent.js"></script>
+  <link rel="stylesheet" href="css/cookie-consent.css?v=2" />
+  <script defer src="js/cookie-consent.js?v=2"></script>
 
   <!-- Additional Accessibility Improvements -->
   <meta name="robots" content="index, follow" />
@@ -98,101 +75,12 @@
   </div>
 
   <!-- Audio für Musik -->
-  <audio id="backgroundMusic" loop>
+  <audio id="backgroundMusic" loop preload="auto">
     <source src="audio/mrdork3/SW_iDork.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
 
-  <!-- JavaScript für Musiksteuerung mit Lautstärke -->
-  <script>
-    const music = document.getElementById('backgroundMusic');
-    const button = document.getElementById('musicToggle');
-    music.volume = 0.2; // Setzt die Standardlautstärke auf 0.02
-    let isPlaying = false;
-
-    // Funktion zur Überprüfung des Gerättyps
-    function isMobileDevice() {
-      return /Mobi|Android/i.test(navigator.userAgent);
-    }
-
-    // Musik starten oder pausieren
-    function toggleMusic() {
-      if (isPlaying) {
-        fadeOut(music, 500); // Schnelleres Fade-Out
-        button.innerHTML = '<span><i class="fa fa-music" aria-hidden="true"></i></span> Play Music'; // Text aktualisieren
-      } else {
-        fadeIn(music, 500); // Schnelleres Fade-In
-        button.innerHTML = '<span><i class="fa fa-pause" aria-hidden="true"></i></span> Pause Music'; // Text aktualisieren
-      }
-      isPlaying = !isPlaying; // Status umschalten
-    }
-
-    // Fade-In-Funktion
-    function fadeIn(audio, duration) {
-      audio.volume = 0;
-      audio.play();
-      const startVolume = 0;
-      const endVolume = 0.02;
-      const step = (endVolume - startVolume) / (duration / 100);
-      let currentVolume = startVolume;
-
-      const fadeInterval = setInterval(() => {
-        if (currentVolume < endVolume) {
-          currentVolume = Math.min(currentVolume + step, endVolume);
-          audio.volume = currentVolume;
-        } else {
-          clearInterval(fadeInterval);
-        }
-      }, 100);
-    }
-
-    // Fade-Out-Funktion
-    function fadeOut(audio, duration) {
-      const startVolume = audio.volume;
-      const endVolume = 0;
-      const step = (startVolume - endVolume) / (duration / 100);
-      let currentVolume = startVolume;
-
-      const fadeInterval = setInterval(() => {
-        if (currentVolume > endVolume) {
-          currentVolume = Math.max(currentVolume - step, endVolume);
-          audio.volume = currentVolume;
-        } else {
-          audio.pause();
-          clearInterval(fadeInterval);
-        }
-      }, 100);
-    }
-
-    // Musik beim Neuladen abspielen, wenn kein Mobilgerät
-    window.addEventListener('load', function () {
-      if (!isMobileDevice()) {
-        fadeIn(music, 500); // Schnelleres Fade-In
-        isPlaying = true; // Musik ist jetzt aktiv
-        button.innerHTML = '<span><i class="fa fa-pause" aria-hidden="true"></i></span> Pause Music'; // Text aktualisieren
-      }
-    });
-
-    // Musiksteuerung über Button
-    button.addEventListener('click', function (event) {
-      event.preventDefault(); // Verhindert das Standardverhalten des Links
-      toggleMusic();
-    });
-
-    // Musik pausieren, wenn der Tab gewechselt wird
-    document.addEventListener('visibilitychange', function () {
-      if (document.hidden) {
-        if (isPlaying) {
-          fadeOut(music, 500); // Schnelleres Fade-Out
-        }
-      } else {
-        // Musik fortsetzen, wenn sie vorher gespielt hat
-        if (isPlaying) {
-          fadeIn(music, 500); // Schnelleres Fade-In
-        }
-      }
-    });
-  </script>
+  <script defer src="js/music-player.js?v=1"></script>
 
   <!-- Page Loader -->
   <div class="page-loader">
@@ -254,7 +142,8 @@
 
             <!-- Steam -->
             <li>
-              <a href="" target="_blank">
+              <a href="https://store.steampowered.com/app/3274870/Mr_Dork_3_One_Last_Doodle/" target="_blank"
+                rel="noopener noreferrer">
                 <img src="images/mrdork3/logos/Steam/steam-logo.png" width="25" alt="Wishlist Mr. Dork 3 on Steam"
                   data-i18n-attr="alt:nav.steamAlt" style="margin-right: 5px" />
               </a>
@@ -263,7 +152,7 @@
 
             <!-- Epic Games Store -->
             <li>
-              <a href="" target="_blank">
+              <a href="coming-soon.html">
                 <img src="images/mrdork3/logos/Epic/Epic_games_store_logo.png" width="25"
                   alt="Wishlist Mr. Dork 3 on Epic Games Store" data-i18n-attr="alt:nav.epicAlt"
                   style="margin-right: 5px" />
@@ -324,9 +213,10 @@
             <!-- Buttons -->
             <div class="wow fadeInUpShort" data-wow-delay=".4s">
               <p></p>
-              <a href="https://store.steampowered.com/app/3274870/Mr. Dork 3/"><img
+              <a href="https://store.steampowered.com/app/3274870/Mr_Dork_3_One_Last_Doodle/" target="_blank"
+                rel="noopener noreferrer"><img
                   src="images/mrdork3/logos/Steam/Steam-logo-white.png" alt="Logo Steam" class="mx-5" /></a>
-              <a href="https://store.epicgames.com/en-US/p/Mr. Dork 3/"><img
+              <a href="coming-soon.html"><img
                   src="images/maystudios/Epic_games_store_logo.png" alt="Logo Epic Games Store" /></a>
               </p>
             </div>
@@ -334,12 +224,12 @@
             <!-- Buttons -->
             <div class="wow fadeInUpShort" data-wow-delay=".4s">
               <p></p>
-              <a href="https://store.steampowered.com/app/3274870/Mr. Dork 3/"><img
-                  src="images/mrdork3/logos/Google Play/Google_Play_Store_badge_EN.webp" alt="Logo Steam"
+              <a href="coming-soon.html"><img
+                  src="images/mrdork3/logos/Google Play/Google_Play_Store_badge_EN.webp" alt="Google Play"
                   class="mx-5" /></a>
-              <a href="https://store.epicgames.com/en-US/p/Mr. Dork 3/"><img
+              <a href="coming-soon.html"><img
                   src="images/mrdork3/logos/Apple/download-on-the-app-store-apple-logo-svgrepo-com.webp"
-                  alt="Logo Epic Games Store" /></a>
+                  alt="App Store" /></a>
               </p>
             </div>
             <!-- End Buttons -->
@@ -578,7 +468,7 @@
                     </blockquote>
                   </div>
                   <div class="col-md-4 col-sm-6 mb-sm-50 mb-xs-30">
-                    Precision is key—whether you’re avoiding deadly traps or trying to outsmart tricky puzzles, only the
+                    Precision is key, whether you’re avoiding deadly traps or trying to outsmart tricky puzzles, only the
                     sharpest players
                     will make it through without falling victim to the game’s cunning challenges.
                   </div>
@@ -615,7 +505,7 @@
                   <div class="col-md-4 col-sm-6 mb-sm-50 mb-xs-30">
                     Unlock new worlds as you advance, each offering its own unique set of puzzles, enemies, and visual
                     flair. No matter
-                    where Mr. Dork goes, danger—and discovery—await.
+                    where Mr. Dork goes, danger and discovery await.
                   </div>
                 </div>
               </div>
@@ -903,10 +793,10 @@
                             specific level the fastest.</li>
                           <li><strong>Infinity Battles:</strong>
                             <ul>
-                              <li><strong>The Floor is Lava – Battle:</strong> Both players start in the lava mode and
+                              <li><strong>The Floor is Lava, Battle:</strong> Both players start in the lava mode and
                                 must
                                 climb up. Winner is the one who survives longer or climbs higher.</li>
-                              <li><strong>Endless Right – Battle:</strong> Players compete to cover the longest distance
+                              <li><strong>Endless Right, Battle:</strong> Players compete to cover the longest distance
                                 or be
                                 faster in the Endless Right mode.</li>
                             </ul>
@@ -1033,7 +923,7 @@
           <div class="text-center mb-80 mb-sm-50">
             <h2 class="section-title">Our Works</h2>
             <p class="section-title-descr">
-              A look at Mr. Dork 3 in action — screenshots straight from the game.
+              A look at Mr. Dork 3 in action, with screenshots straight from the game.
             </p>
           </div>
 
@@ -1134,6 +1024,108 @@
               </a>
             </li>
             <!-- End Work Item -->
+
+            <!-- Steam Screenshot (Lightbox) -->
+            <li class="work-item mix">
+              <a href="images/mrdork3/gameplay/steam-screenshot-01.jpg" class="work-lightbox-link mfp-image">
+                <div class="work-img">
+                  <div class="work-img-bg wow-p scalexIn"></div>
+                  <img src="images/mrdork3/gameplay/steam-screenshot-01.jpg"
+                    alt="Mr. Dork drawing a platform below a pencil enemy" width="1920" height="1080" loading="lazy"
+                    class="wow-p fadeIn" data-wow-delay="1s" />
+                </div>
+                <div class="work-intro">
+                  <h3 class="work-title">Mr. Dork 3</h3>
+                  <div class="work-descr">Gameplay</div>
+                </div>
+              </a>
+            </li>
+            <!-- End Steam Screenshot -->
+
+            <!-- Steam Screenshot (Lightbox) -->
+            <li class="work-item mix">
+              <a href="images/mrdork3/gameplay/steam-screenshot-02.jpg" class="work-lightbox-link mfp-image">
+                <div class="work-img">
+                  <div class="work-img-bg wow-p scalexIn"></div>
+                  <img src="images/mrdork3/gameplay/steam-screenshot-02.jpg"
+                    alt="Mr. Dork trapping an enemy with a drawn ink line" width="1920" height="1080" loading="lazy"
+                    class="wow-p fadeIn" data-wow-delay="1s" />
+                </div>
+                <div class="work-intro">
+                  <h3 class="work-title">Mr. Dork 3</h3>
+                  <div class="work-descr">Gameplay</div>
+                </div>
+              </a>
+            </li>
+            <!-- End Steam Screenshot -->
+
+            <!-- Steam Screenshot (Lightbox) -->
+            <li class="work-item mix">
+              <a href="images/mrdork3/gameplay/steam-screenshot-03.jpg" class="work-lightbox-link mfp-image">
+                <div class="work-img">
+                  <div class="work-img-bg wow-p scalexIn"></div>
+                  <img src="images/mrdork3/gameplay/steam-screenshot-03.jpg"
+                    alt="Mr. Dork jumping toward an armored pencil enemy" width="1920" height="1080" loading="lazy"
+                    class="wow-p fadeIn" data-wow-delay="1s" />
+                </div>
+                <div class="work-intro">
+                  <h3 class="work-title">Mr. Dork 3</h3>
+                  <div class="work-descr">Gameplay</div>
+                </div>
+              </a>
+            </li>
+            <!-- End Steam Screenshot -->
+
+            <!-- Steam Screenshot (Lightbox) -->
+            <li class="work-item mix">
+              <a href="images/mrdork3/gameplay/steam-screenshot-04.jpg" class="work-lightbox-link mfp-image">
+                <div class="work-img">
+                  <div class="work-img-bg wow-p scalexIn"></div>
+                  <img src="images/mrdork3/gameplay/steam-screenshot-04.jpg"
+                    alt="Mr. Dork running through a level with movable blocks" width="1920" height="1080" loading="lazy"
+                    class="wow-p fadeIn" data-wow-delay="1s" />
+                </div>
+                <div class="work-intro">
+                  <h3 class="work-title">Mr. Dork 3</h3>
+                  <div class="work-descr">Gameplay</div>
+                </div>
+              </a>
+            </li>
+            <!-- End Steam Screenshot -->
+
+            <!-- Steam Screenshot (Lightbox) -->
+            <li class="work-item mix">
+              <a href="images/mrdork3/gameplay/steam-screenshot-05.jpg" class="work-lightbox-link mfp-image">
+                <div class="work-img">
+                  <div class="work-img-bg wow-p scalexIn"></div>
+                  <img src="images/mrdork3/gameplay/steam-screenshot-05.jpg"
+                    alt="Mr. Dork navigating a level with rotating obstacles" width="1920" height="1080" loading="lazy"
+                    class="wow-p fadeIn" data-wow-delay="1s" />
+                </div>
+                <div class="work-intro">
+                  <h3 class="work-title">Mr. Dork 3</h3>
+                  <div class="work-descr">Gameplay</div>
+                </div>
+              </a>
+            </li>
+            <!-- End Steam Screenshot -->
+
+            <!-- Steam Screenshot (Lightbox) -->
+            <li class="work-item mix">
+              <a href="images/mrdork3/gameplay/steam-screenshot-06.jpg" class="work-lightbox-link mfp-image">
+                <div class="work-img">
+                  <div class="work-img-bg wow-p scalexIn"></div>
+                  <img src="images/mrdork3/gameplay/steam-screenshot-06.jpg"
+                    alt="Mr. Dork crossing a green platform level filled with spikes" width="1920" height="1080"
+                    loading="lazy" class="wow-p fadeIn" data-wow-delay="1s" />
+                </div>
+                <div class="work-intro">
+                  <h3 class="work-title">Mr. Dork 3</h3>
+                  <div class="work-descr">Gameplay</div>
+                </div>
+              </a>
+            </li>
+            <!-- End Steam Screenshot -->
           </ul>
           <!-- End Our Works Grid -->
 
@@ -1186,7 +1178,7 @@
                       wait to explore more levels!"
                     </p>
                     <footer class="testimonial-author mt-50 mt-sm-20">
-                      — Florian, Game Enthusiast
+                      Florian, Game Enthusiast
                     </footer>
                   </blockquote>
                 </div>
@@ -1201,7 +1193,7 @@
                       experience for platformer fans."
                     </p>
                     <footer class="testimonial-author mt-50 mt-sm-20">
-                      — Sven Fredrik Maibaum, Indie Developer
+                      Sven Fredrik Maibaum, Indie Developer
                     </footer>
                   </blockquote>
                 </div>
@@ -1216,7 +1208,7 @@
                       must-play!"
                     </p>
                     <footer class="testimonial-author mt-50 mt-sm-20">
-                      — Nils Bergemann, Indie Developer
+                      Nils Bergemann, Indie Developer
                     </footer>
                   </blockquote>
                 </div>
@@ -1367,7 +1359,7 @@
                 </div>
 
                 <div class="form-tip">
-                  Proin fringilla augue at maximus vestibulum
+                  By subscribing, you agree to our
                   <a href="#">Terms & Conditions</a>.
                 </div>
 
@@ -1390,7 +1382,8 @@
           <a href="./faq.html">FAQ</a> &bull;
           <a href="./legal.html">Legal Notice</a> &bull;
           <a href="./tos.html">Terms of Sale</a> &bull;
-          <a href="./policy.html">Privacy Policy</a>
+          <a href="./policy.html">Privacy Policy</a> &bull;
+          <a href="#" data-cookie-settings data-i18n="cookie.reopen">Cookie settings</a>
         </div>
         <!-- Social Links -->
         <div class="footer-social-links mb-90 mb-xs-40">
@@ -1430,8 +1423,6 @@
           top</span></a>
     </div>
     <!-- End Top Link -->
-    </footer>
-    <!-- End Footer -->
   </div>
   <!-- End Page Wrap -->
 

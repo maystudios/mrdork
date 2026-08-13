@@ -1,9 +1,9 @@
 /*
- * Mr. Dork 3 — translation dictionary (core / shared chrome).
+ * Mr. Dork 3 translation dictionary (core and shared chrome).
  *
  * Page-specific strings are merged into this same global by additional
  * translation files (js/i18n/<page>.js), so keep keys namespaced by area
- * (nav.*, footer.*, cookie.*, home.*, faq.*, legal.*, …) to avoid collisions.
+ * (nav.*, footer.*, cookie.*, home.*, faq.*, legal.*, etc.) to avoid collisions.
  *
  * Keys are flat strings. German (de) is the second language; English (en)
  * mirrors the source copy and acts as the fallback.
@@ -39,18 +39,19 @@ window.MRDORK_I18N = window.MRDORK_I18N || { en: {}, de: {} };
     "footer.privacy": "Privacy Policy",
     "footer.copyright": "&copy; MayStudios",
 
-    "cookie.title": "We value your privacy",
-    "cookie.body": "We use necessary cookies to make the site work and — only with your consent — Google Analytics 4 to understand how the site is used. See our <a href=\"policy.html\">Privacy Policy</a>.",
-    "cookie.acceptAll": "Accept all",
-    "cookie.rejectAll": "Reject all",
-    "cookie.settings": "Settings",
+    "cookie.title": "Your privacy, your choice",
+    "cookie.body": "We store your necessary settings locally. Only with your consent, Google Analytics 4 measures visits. Nothing is sent to Google beforehand. See our <a href=\"policy.html\">Privacy Policy</a>.",
+    "cookie.acceptAll": "Allow statistics",
+    "cookie.rejectAll": "Necessary only",
+    "cookie.settings": "Customize",
     "cookie.save": "Save selection",
-    "cookie.prefsTitle": "Cookie settings",
-    "cookie.prefsIntro": "Choose which cookies you allow. You can change this at any time.",
+    "cookie.close": "Close privacy settings",
+    "cookie.prefsTitle": "Privacy settings",
+    "cookie.prefsIntro": "Choose whether we may measure visits. You can change or withdraw your choice at any time.",
     "cookie.necessary": "Necessary",
-    "cookie.necessaryDesc": "Required for the site to function (e.g. storing your consent and language preference). Always active.",
+    "cookie.necessaryDesc": "Stores your privacy choice, language and music preference locally in this browser. Always active.",
     "cookie.statistics": "Statistics",
-    "cookie.statisticsDesc": "Google Analytics 4 (Google Ireland Ltd.) — helps us understand how the site is used. Loaded only after you accept.",
+    "cookie.statisticsDesc": "Google Analytics 4 (Google Ireland Ltd.) measures visits and page views. It loads only after you opt in; advertising features remain disabled.",
     "cookie.alwaysOn": "Always active",
     "cookie.reopen": "Cookie settings"
   });
@@ -81,18 +82,19 @@ window.MRDORK_I18N = window.MRDORK_I18N || { en: {}, de: {} };
     "footer.privacy": "Datenschutz",
     "footer.copyright": "&copy; MayStudios",
 
-    "cookie.title": "Wir respektieren deine Privatsphäre",
-    "cookie.body": "Wir verwenden notwendige Cookies, damit die Website funktioniert, und – nur mit deiner Einwilligung – Google Analytics 4, um zu verstehen, wie die Website genutzt wird. Mehr dazu in unserer <a href=\"policy.html\">Datenschutzerklärung</a>.",
-    "cookie.acceptAll": "Alle akzeptieren",
-    "cookie.rejectAll": "Alle ablehnen",
-    "cookie.settings": "Einstellungen",
+    "cookie.title": "Deine Privatsphäre, deine Wahl",
+    "cookie.body": "Wir speichern deine notwendigen Einstellungen lokal. Nur mit deiner Einwilligung misst Google Analytics 4 Besuche. Vorher wird nichts an Google gesendet. Mehr dazu in unserer <a href=\"policy.html\">Datenschutzerklärung</a>.",
+    "cookie.acceptAll": "Statistik erlauben",
+    "cookie.rejectAll": "Nur notwendige",
+    "cookie.settings": "Anpassen",
     "cookie.save": "Auswahl speichern",
-    "cookie.prefsTitle": "Cookie-Einstellungen",
-    "cookie.prefsIntro": "Wähle aus, welche Cookies du zulässt. Du kannst dies jederzeit ändern.",
+    "cookie.close": "Datenschutz-Einstellungen schließen",
+    "cookie.prefsTitle": "Datenschutz-Einstellungen",
+    "cookie.prefsIntro": "Entscheide, ob wir Besuche messen dürfen. Du kannst deine Auswahl jederzeit ändern oder widerrufen.",
     "cookie.necessary": "Notwendig",
-    "cookie.necessaryDesc": "Erforderlich, damit die Website funktioniert (z. B. Speichern deiner Einwilligung und Sprachauswahl). Immer aktiv.",
+    "cookie.necessaryDesc": "Speichert deine Datenschutz-Auswahl, Sprache und Musikauswahl lokal in diesem Browser. Immer aktiv.",
     "cookie.statistics": "Statistik",
-    "cookie.statisticsDesc": "Google Analytics 4 (Google Ireland Ltd.) – hilft uns zu verstehen, wie die Website genutzt wird. Wird erst nach deiner Zustimmung geladen.",
+    "cookie.statisticsDesc": "Google Analytics 4 (Google Ireland Ltd.) misst Besuche und Seitenaufrufe. Es lädt erst nach deiner Zustimmung; Werbefunktionen bleiben deaktiviert.",
     "cookie.alwaysOn": "Immer aktiv",
     "cookie.reopen": "Cookie-Einstellungen"
   });

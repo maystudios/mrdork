@@ -1,4 +1,4 @@
-/* Mr. Dork 3 — cookie consent banner & preferences modal
+/* Mr. Dork 3 cookie consent banner and preferences modal
    Self-contained, prefixed (.cc-*) so it never collides with Bootstrap/theme CSS. */
 
 .cc-banner {
@@ -27,7 +27,7 @@
   justify-content: space-between;
 }
 .cc-banner__text { flex: 1 1 440px; }
-.cc-banner__title { font-weight: 700; font-size: 16px; margin: 0 0 6px; }
+.cc-banner__title { color: inherit; font-weight: 700; font-size: 16px; line-height: 1.35; margin: 0 0 6px; }
 .cc-banner__text p { margin: 0; }
 .cc-banner a { color: #7db1ff; text-decoration: underline; }
 .cc-banner a:hover { color: #a9ccff; }
@@ -47,10 +47,12 @@
   font-family: inherit;
   line-height: 1.2;
 }
-.cc-btn--primary { background: #ffffff; color: #111111; }
+.cc-btn--primary { background: #ffffff; color: #111111; border-color: #ffffff; }
 .cc-btn--primary:hover { background: #7db1ff; color: #ffffff; }
-.cc-btn--ghost { background: transparent; color: #ededed; border-color: rgba(255, 255, 255, 0.45); }
-.cc-btn--ghost:hover { border-color: #ffffff; }
+.cc-btn--secondary { background: transparent; color: #ededed; border-color: rgba(255, 255, 255, 0.65); }
+.cc-btn--secondary:hover { border-color: #ffffff; }
+.cc-btn:focus-visible,
+.cc-modal__close:focus-visible { outline: 3px solid #7db1ff; outline-offset: 3px; }
 
 /* Preferences modal */
 .cc-modal {
@@ -66,6 +68,7 @@
 .cc-modal[hidden] { display: none; }
 
 .cc-modal__box {
+  position: relative;
   background: #1d1d1d;
   color: #ededed;
   max-width: 560px;
@@ -75,8 +78,30 @@
   max-height: 86vh;
   overflow-y: auto;
 }
-.cc-modal__title { font-size: 21px; font-weight: 700; margin: 0 0 10px; }
+.cc-modal__title { color: inherit; font-size: 21px; line-height: 1.35; font-weight: 700; margin: 0 36px 10px 0; }
 .cc-modal__intro { font-size: 14px; color: #cfcfcf; margin: 0 0 8px; }
+.cc-modal__close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  background: transparent;
+  color: #ededed;
+  cursor: pointer;
+  font: inherit;
+  font-size: 24px;
+  line-height: 32px;
+}
+.cc-modal__close:hover,
+.cc-modal__close:focus-visible {
+  border-color: #ffffff;
+  outline: 2px solid #7db1ff;
+  outline-offset: 2px;
+}
 
 .cc-cat {
   border-top: 1px solid rgba(255, 255, 255, 0.12);
@@ -86,7 +111,7 @@
   align-items: flex-start;
 }
 .cc-cat__main { flex: 1; }
-.cc-cat__name { font-weight: 700; margin: 0 0 4px; font-size: 15px; }
+.cc-cat__name { color: inherit; font-weight: 700; line-height: 1.35; margin: 0 0 4px; font-size: 15px; }
 .cc-cat__desc { margin: 0; font-size: 13px; color: #b9b9b9; }
 .cc-cat__always { font-size: 12px; font-weight: 600; color: #8ad28a; white-space: nowrap; padding-top: 3px; }
 
@@ -124,6 +149,8 @@
   margin-top: 22px;
   flex-wrap: wrap;
 }
+
+.cc-modal-open { overflow: hidden; }
 
 @media (max-width: 600px) {
   .cc-banner { padding: 16px; }
